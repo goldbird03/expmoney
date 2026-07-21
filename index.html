@@ -107,6 +107,7 @@
   .biz-name{font-family:'Fraunces',serif; font-size:15px; line-height:1.2;}
   .biz-cat{font-size:10.5px; opacity:0.75;}
   .biz-chevron{opacity:0.7; font-size:14px;}
+  .tier-medal{font-size:10px; font-weight:700; background:rgba(0,0,0,0.28); border:1px solid rgba(255,255,255,0.35); padding:2px 7px; border-radius:999px; white-space:nowrap;}
   .biz-stamp-row{display:flex; flex-wrap:wrap; gap:5px; margin:10px 0 6px;}
   .stamp-sm{width:20px; height:20px; border:1.5px solid rgba(255,255,255,0.35); background:rgba(0,0,0,0.15);}
   .stamp-sm.active{background:rgba(0,0,0,0.35); border-color:rgba(255,255,255,0.7); box-shadow:none;}
@@ -196,6 +197,65 @@
   @keyframes scanmove{ 0%{top:10%;} 50%{top:86%;} 100%{top:10%;} }
   @media (prefers-reduced-motion: reduce){ .scan-line{ animation:none; top:50%; } }
 
+  /* --- DASHBOARD DEL COMERCIO --- */
+  .dashboard-section{margin-bottom:2.5rem;}
+  .dash-header{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;}
+  .dash-sub{font-size:12.5px; color:var(--text-dim);}
+  .dash-filters{display:flex; gap:8px; flex-wrap:wrap;}
+  .dash-filters select{width:auto; min-width:140px; padding:8px 10px; font-size:12.5px;}
+
+  .dash-grid-top{display:grid; grid-template-columns:1fr 1.4fr; gap:1.25rem; margin-bottom:1.25rem;}
+  .dash-grid-bottom{display:grid; grid-template-columns:1fr 1.2fr; gap:1.25rem; margin-bottom:1.25rem;}
+  @media(max-width:900px){ .dash-grid-top, .dash-grid-bottom{grid-template-columns:1fr;} }
+
+  .dash-card{background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--radius-lg); padding:1.5rem; box-shadow:0 10px 30px rgba(0,0,0,0.4); position:relative;}
+  .dash-label{font-size:11px; font-weight:600; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:8px; margin-bottom:10px;}
+  .dash-microcopy{font-size:11.5px; color:var(--text-dim); margin-bottom:10px; text-align:left;}
+  .plan-tag{background:rgba(201,162,39,0.14); color:var(--gold-light); font-size:9px; font-weight:700; padding:2px 8px; border-radius:999px; text-transform:none; letter-spacing:0.2px;}
+  .plan-tag.plan-full{background:rgba(217,108,95,0.14); color:var(--danger);}
+
+  .kpi-big{font-family:'Fraunces',serif; font-size:34px; color:var(--text); line-height:1;}
+  .kpi-trend{font-size:11.5px; font-weight:600; margin-top:6px; display:inline-block; padding:2px 8px; border-radius:6px;}
+  .kpi-trend.up{background:rgba(119,178,85,0.15); color:var(--success);}
+  .kpi-trend.down{background:rgba(217,108,95,0.15); color:var(--danger);}
+  .kpi-trend.flat{background:rgba(156,154,144,0.15); color:var(--text-dim);}
+  .kpi-sub-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px; padding-top:14px; border-top:1px solid var(--border-soft);}
+  .kpi-sub-label{font-size:9.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.4px;}
+  .kpi-sub-val{font-size:16px; font-weight:700; color:var(--text); margin-top:2px;}
+
+  .daily-chart-svg{width:100%; height:auto; overflow:visible;}
+  .daily-bar{fill:var(--gold); opacity:0.85;}
+  .daily-bar:hover{opacity:1;}
+  .daily-axis-label{fill:var(--text-faint); font-size:8px; font-family:'Inter',sans-serif;}
+  .daily-val-label{fill:var(--gold-light); font-size:8px; font-family:'JetBrains Mono',monospace;}
+
+  .recurrence-gauge-wrap{display:flex; justify-content:center; margin:6px 0 10px;}
+  .recurrence-pct{font-family:'Fraunces',serif; font-size:26px; fill:var(--gold-light);}
+  .recurrence-legend{display:flex; justify-content:center; gap:14px; flex-wrap:wrap; font-size:10.5px; color:var(--text-dim); margin-top:6px;}
+  .recurrence-legend .dot{width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:4px;}
+
+  .dash-tabs{display:flex; gap:6px; margin-bottom:14px;}
+  .dash-tab{background:var(--surface-2); border:1px solid var(--border-soft); color:var(--text-dim); font-size:11.5px; font-weight:600; padding:6px 14px; border-radius:8px; cursor:pointer; font-family:inherit;}
+  .dash-tab.active{background:var(--gold); color:#1A1400; border-color:var(--gold);}
+
+  .rank-row{margin-bottom:12px;}
+  .rank-row-top{display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;}
+  .rank-row-top .rk-name{color:var(--text); font-weight:500;}
+  .rank-row-top .rk-name .rk-idx{color:var(--text-faint); font-family:'JetBrains Mono',monospace; margin-right:6px;}
+  .rank-row-top .rk-val{color:var(--gold-light); font-weight:600; font-family:'JetBrains Mono',monospace;}
+  .rank-bar-track{height:6px; background:var(--surface-2); border-radius:999px; overflow:hidden;}
+  .rank-bar-fill{height:100%; background:linear-gradient(90deg, var(--bronze), var(--gold-light)); border-radius:999px; transition:width 0.4s ease;}
+
+  .dash-locked{overflow:hidden;}
+  .dash-locked-content{filter:blur(2.5px) grayscale(0.3); opacity:0.55; pointer-events:none; user-select:none;}
+  .dash-locked-overlay{position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; text-align:center; padding:1.5rem; background:rgba(10,12,16,0.35);}
+  .dash-locked-overlay .lock-icon{font-size:26px;}
+  .dash-locked-overlay p{font-size:12.5px; color:var(--text); max-width:280px; text-align:center;}
+  .dash-example-row{display:flex; align-items:center; gap:18px; flex-wrap:wrap;}
+  .dash-example-legend{font-size:12px; color:var(--text-dim); display:flex; flex-direction:column; gap:6px;}
+  .dash-example-legend .dot{width:9px; height:9px; border-radius:50%; display:inline-block; margin-right:6px;}
+  .dash-example-legend b{color:var(--text); margin-left:6px;}
+
   /* --- ARCHITECTURE ARCHIVE (INSPECTOR RELACIONAL) --- */
   .architecture-section{border-top:2px dashed var(--border-soft); padding-top:2rem; margin-top:1rem;}
   .arch-title{font-family:'Fraunces',serif; font-size:22px; color:var(--gold-light); margin-bottom:1rem; display:flex; align-items:center; gap:8px;}
@@ -250,6 +310,92 @@
     </div>
   </div>
 
+  <!-- SECCIÓN DASHBOARD DE VISUALIZACIÓN DEL COMERCIO -->
+  <div class="dashboard-section">
+    <div class="dash-header">
+      <div>
+        <div class="arch-title" style="margin-bottom:2px;">📊 Dashboard del Comercio</div>
+        <p class="dash-sub">Resumen operativo del período · Datos en vivo de fidelización</p>
+      </div>
+      <div class="dash-filters">
+        <select id="dash-business-filter" onchange="setDashBusiness(this.value)"></select>
+        <select id="dash-period-filter" onchange="setDashPeriod(this.value)">
+          <option value="7">Últimos 7 días</option>
+          <option value="30" selected>Últimos 30 días</option>
+          <option value="all">Todo el histórico</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="chips-row" style="margin:12px 0 18px;">
+      <button class="chip" id="dash-chip-all" onclick="setDashChip('all')">Mostrar Todo</button>
+      <button class="chip" id="dash-chip-recurrente" onclick="setDashChip('recurrente')">🔁 Más Recurrente</button>
+      <button class="chip" id="dash-chip-racha" onclick="setDashChip('racha')">🔥 Mejor Racha</button>
+      <button class="chip" id="dash-chip-plumas" onclick="setDashChip('plumas')">🪶 Más Plumas</button>
+    </div>
+
+    <div class="dash-grid-top">
+      <div class="dash-card">
+        <div class="dash-label">🪶 Plumas otorgadas <span class="plan-tag">Plan Base</span></div>
+        <div class="kpi-big" id="dash-kpi-plumas">—</div>
+        <div id="dash-kpi-trend"></div>
+        <div class="kpi-sub-grid">
+          <div><div class="kpi-sub-label">Tasa de canje</div><div class="kpi-sub-val" id="dash-kpi-redemption">—</div></div>
+          <div><div class="kpi-sub-label">N° de visitas</div><div class="kpi-sub-val" id="dash-kpi-visits">—</div></div>
+          <div><div class="kpi-sub-label">Clientes activos</div><div class="kpi-sub-val" id="dash-kpi-active">—</div></div>
+          <div><div class="kpi-sub-label">Premios canjeados</div><div class="kpi-sub-val" id="dash-kpi-redeemed">—</div></div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-label">📈 Sellos / Plumas generados por día <span class="plan-tag">Plan Base</span></div>
+        <div id="dash-daily-chart"></div>
+      </div>
+    </div>
+
+    <div class="dash-grid-bottom">
+      <div class="dash-card" style="text-align:center;">
+        <div class="dash-label" style="text-align:left;">🔁 Recurrencia mensual <span class="plan-tag">Plan Base</span></div>
+        <p class="dash-microcopy">% de clientes que volvieron a estampar al menos 2 veces en los últimos 30 días.</p>
+        <div id="dash-recurrence-donut"></div>
+        <div id="dash-recurrence-legend"></div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-tabs">
+          <button class="dash-tab" id="dash-rank-tab-clientes" onclick="setDashRankTab('clientes')">Clientes</button>
+          <button class="dash-tab" id="dash-rank-tab-comercios" onclick="setDashRankTab('comercios')">Comercios</button>
+        </div>
+        <div id="dash-rank-list"></div>
+      </div>
+    </div>
+
+    <div class="dash-card dash-locked">
+      <div class="dash-locked-overlay">
+        <span class="lock-icon">🔒</span>
+        <p>Analítica de ventas y categorías de canje — disponible con <b>Plan Full</b></p>
+      </div>
+      <div class="dash-locked-content">
+        <div class="dash-label">🍩 Categorías más canjeadas <span class="plan-tag plan-full">Ejemplo · Plan Full</span></div>
+        <div class="dash-example-row">
+          <div class="dash-donut-mock">
+            <svg viewBox="0 0 120 120" width="120" height="120">
+              <circle cx="60" cy="60" r="48" fill="none" stroke="#1A1E28" stroke-width="16"/>
+              <circle cx="60" cy="60" r="48" fill="none" stroke="#5FA8D3" stroke-width="16" stroke-dasharray="135 165" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+              <circle cx="60" cy="60" r="48" fill="none" stroke="#C9A227" stroke-width="16" stroke-dasharray="60 240" stroke-dashoffset="-135" transform="rotate(-90 60 60)"/>
+              <circle cx="60" cy="60" r="48" fill="none" stroke="#D96C5F" stroke-width="16" stroke-dasharray="45 255" stroke-dashoffset="-195" transform="rotate(-90 60 60)"/>
+              <circle cx="60" cy="60" r="48" fill="none" stroke="#77B255" stroke-width="16" stroke-dasharray="60 240" stroke-dashoffset="-240" transform="rotate(-90 60 60)"/>
+            </svg>
+          </div>
+          <div class="dash-example-legend">
+            <div><span class="dot" style="background:#5FA8D3;"></span>Bebidas <b>45%</b></div>
+            <div><span class="dot" style="background:#C9A227;"></span>Desayunos <b>20%</b></div>
+            <div><span class="dot" style="background:#D96C5F;"></span>Postres <b>15%</b></div>
+            <div><span class="dot" style="background:#77B255;"></span>Combos <b>20%</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- SECCIÓN INFERIOR: ARQUITECTURA E INSPECTOR DE BASE DE DATOS -->
   <div class="architecture-section">
     <div class="arch-title">
@@ -265,7 +411,7 @@
         <div class="db-table-h"><span>📋 Tabla: Users</span><span>Dimension Table</span></div>
         <div class="table-wrapper">
           <table>
-            <thead><tr><th><span class="pk">id (PK)</span></th><th>name</th><th>email</th><th>role</th><th>experience_points</th></tr></thead>
+            <thead><tr><th><span class="pk">id (PK)</span></th><th>name</th><th>email</th><th>role</th><th>doc_type</th><th>experience_points</th></tr></thead>
             <tbody id="db-users-body"></tbody>
           </table>
         </div>
@@ -276,7 +422,7 @@
         <div class="db-table-h"><span>🏢 Tabla: Businesses</span><span>Configuration Table</span></div>
         <div class="table-wrapper">
           <table>
-            <thead><tr><th><span class="pk">id (PK)</span></th><th>name</th><th>categoria</th><th>puntos_por_sello</th><th>max_sellos_recompensa</th><th>rating</th></tr></thead>
+            <thead><tr><th><span class="pk">id (PK)</span></th><th>name</th><th>categoria</th><th>puntos_por_sello</th><th>max_sellos_recompensa</th><th>rating</th><th>orden_registro</th></tr></thead>
             <tbody id="db-businesses-body"></tbody>
           </table>
         </div>
@@ -287,7 +433,7 @@
         <div class="db-table-h"><span>💳 Tabla: LoyaltyCards</span><span>State Table (Fact Summary)</span></div>
         <div class="table-wrapper">
           <table>
-            <thead><tr><th><span class="pk">id (PK)</span></th><th><span class="fk">user_id (FK)</span></th><th><span class="fk">business_id (FK)</span></th><th>current_stamps</th><th>total_historical_plumas</th><th>reward_ready</th></tr></thead>
+            <thead><tr><th><span class="pk">id (PK)</span></th><th><span class="fk">user_id (FK)</span></th><th><span class="fk">business_id (FK)</span></th><th>current_stamps</th><th>total_historical_plumas</th><th>nivel_comercio</th><th>reward_ready</th></tr></thead>
             <tbody id="db-cards-body"></tbody>
           </table>
         </div>
@@ -378,22 +524,22 @@ const GIFT_CATALOG = [
 // --- MOTOR DE BASE DE DATOS EN MEMORIA ---
 const DB = {
   users: [
-    { id: "USR-001", name: "user1", email: "prueba1@expandelab.app", role: "client", experience_points: 8, racha_dias: 6 },
-    { id: "USR-002", name: "user2", email: "prueba2@expandelab.app", role: "client", experience_points: 32, racha_dias: 14 },
-    { id: "USR-099", name: "user3", email: "prueba3@expandelab.app", role: "merchant" }
+    { id: "USR72841096", name: "user1", email: "prueba1@expandelab.app", role: "client", experience_points: 16, doc_type: "DNI", doc_value: "72841096", registration_order: null },
+    { id: "USR68459213", name: "user2", email: "prueba2@expandelab.app", role: "client", experience_points: 42, doc_type: "DNI", doc_value: "68459213", registration_order: null },
+    { id: "USR00000001", name: "user3", email: "prueba3@expandelab.app", role: "merchant", doc_type: "OTRO", doc_value: null, registration_order: 1 }
   ],
   businesses: [
-    { id: "BIZ-101", name: "Gold Bird Café", category: "Cafetería", puntos_por_sello: 1, max_sellos_recompensa: 10, icon: "☕", color1: "#8a5a1e", color2: "#e0913a", rating: 4.8, distance: "350 m" },
-    { id: "BIZ-102", name: "Pizzería Fuego", category: "Pizzería", puntos_por_sello: 1, max_sellos_recompensa: 10, icon: "🍕", color1: "#7a2a1a", color2: "#e0642f", rating: 4.6, distance: "800 m" },
-    { id: "BIZ-103", name: "Barbería Rey", category: "Barbería", puntos_por_sello: 1, max_sellos_recompensa: 8, icon: "💈", color1: "#3a2a6b", color2: "#7a5ad1", rating: 4.9, distance: "1.2 km" },
-    { id: "BIZ-104", name: "Spa Urbano", category: "Spa", puntos_por_sello: 1, max_sellos_recompensa: 10, icon: "💆", color1: "#1e5a4a", color2: "#3ad19a", rating: 4.7, distance: "2.1 km" }
+    { id: "BIZ00001", name: "Gold Bird Café", category: "Cafetería", puntos_por_sello: 1, max_sellos_recompensa: 10, icon: "☕", color1: "#8a5a1e", color2: "#e0913a", rating: 4.8, distance: "350 m", registration_order: 1 },
+    { id: "BIZ00002", name: "Pizzería Fuego", category: "Pizzería", puntos_por_sello: 1, max_sellos_recompensa: 10, icon: "🍕", color1: "#7a2a1a", color2: "#e0642f", rating: 4.6, distance: "800 m", registration_order: 2 },
+    { id: "BIZ00003", name: "Barbería Rey", category: "Barbería", puntos_por_sello: 1, max_sellos_recompensa: 8, icon: "💈", color1: "#3a2a6b", color2: "#7a5ad1", rating: 4.9, distance: "1.2 km", registration_order: 3 },
+    { id: "BIZ00004", name: "Spa Urbano", category: "Spa", puntos_por_sello: 1, max_sellos_recompensa: 10, icon: "💆", color1: "#1e5a4a", color2: "#3ad19a", rating: 4.7, distance: "2.1 km", registration_order: 4 }
   ],
   loyaltyCards: [
-    { id: "CRD-881", user_id: "USR-001", business_id: "BIZ-101", current_stamps: 8, total_historical_plumas: 8, reward_ready: false },
-    { id: "CRD-883", user_id: "USR-001", business_id: "BIZ-102", current_stamps: 3, total_historical_plumas: 3, reward_ready: false },
-    { id: "CRD-884", user_id: "USR-001", business_id: "BIZ-103", current_stamps: 5, total_historical_plumas: 5, reward_ready: false },
-    { id: "CRD-882", user_id: "USR-002", business_id: "BIZ-101", current_stamps: 0, total_historical_plumas: 32, reward_ready: false },
-    { id: "CRD-885", user_id: "USR-002", business_id: "BIZ-102", current_stamps: 10, total_historical_plumas: 10, reward_ready: true }
+    { id: "CRD-881", user_id: "USR72841096", business_id: "BIZ00001", current_stamps: 8, total_historical_plumas: 8, reward_ready: false },
+    { id: "CRD-883", user_id: "USR72841096", business_id: "BIZ00002", current_stamps: 3, total_historical_plumas: 3, reward_ready: false },
+    { id: "CRD-884", user_id: "USR72841096", business_id: "BIZ00003", current_stamps: 5, total_historical_plumas: 5, reward_ready: false },
+    { id: "CRD-882", user_id: "USR68459213", business_id: "BIZ00001", current_stamps: 0, total_historical_plumas: 32, reward_ready: false },
+    { id: "CRD-885", user_id: "USR68459213", business_id: "BIZ00002", current_stamps: 10, total_historical_plumas: 10, reward_ready: true }
   ],
   transactions: [
     { id: "TX-0991", card_id: "CRD-881", type: "stamp_add", amount_stamps: 1, amount_plumas: 1, created_at: "09:40 AM", visit_date: "2026-06-12" },
@@ -406,12 +552,21 @@ const DB = {
     { id: "TX-0984", card_id: "CRD-882", type: "stamp_add", amount_stamps: 6, amount_plumas: 6, created_at: "09:05 AM", visit_date: "2026-06-29" },
     { id: "TX-0985", card_id: "CRD-882", type: "stamp_add", amount_stamps: 4, amount_plumas: 4, created_at: "16:45 PM", visit_date: "2026-07-04" },
     { id: "TX-0986", card_id: "CRD-882", type: "stamp_add", amount_stamps: 5, amount_plumas: 5, created_at: "12:15 PM", visit_date: "2026-07-08" },
-    { id: "TX-1002", card_id: "CRD-882", type: "stamp_add", amount_stamps: 5, amount_plumas: 5, created_at: "11:02 AM", visit_date: "2026-07-12" }
+    { id: "TX-1002", card_id: "CRD-882", type: "stamp_add", amount_stamps: 5, amount_plumas: 5, created_at: "11:02 AM", visit_date: "2026-07-12" },
+    { id: "TX-0971", card_id: "CRD-883", type: "stamp_add", amount_stamps: 2, amount_plumas: 2, created_at: "19:20 PM", visit_date: "2026-07-05" },
+    { id: "TX-0972", card_id: "CRD-883", type: "stamp_add", amount_stamps: 1, amount_plumas: 1, created_at: "20:10 PM", visit_date: "2026-07-15" },
+    { id: "TX-0973", card_id: "CRD-884", type: "stamp_add", amount_stamps: 2, amount_plumas: 2, created_at: "17:00 PM", visit_date: "2026-06-20" },
+    { id: "TX-0974", card_id: "CRD-884", type: "stamp_add", amount_stamps: 2, amount_plumas: 2, created_at: "16:30 PM", visit_date: "2026-07-01" },
+    { id: "TX-0975", card_id: "CRD-884", type: "stamp_add", amount_stamps: 1, amount_plumas: 1, created_at: "18:45 PM", visit_date: "2026-07-14" },
+    { id: "TX-0976", card_id: "CRD-885", type: "stamp_add", amount_stamps: 3, amount_plumas: 3, created_at: "13:00 PM", visit_date: "2026-06-10" },
+    { id: "TX-0977", card_id: "CRD-885", type: "stamp_add", amount_stamps: 3, amount_plumas: 3, created_at: "13:40 PM", visit_date: "2026-06-18" },
+    { id: "TX-0978", card_id: "CRD-885", type: "stamp_add", amount_stamps: 2, amount_plumas: 2, created_at: "14:15 PM", visit_date: "2026-06-27" },
+    { id: "TX-0979", card_id: "CRD-885", type: "stamp_add", amount_stamps: 2, amount_plumas: 2, created_at: "12:50 PM", visit_date: "2026-07-06" }
   ],
   giftedCoupons: []
 };
 
-let activeClientId = "USR-001";
+let activeClientId = "USR72841096";
 let activeClientTab = "cards"; // cards | rewards | nearby | profile
 let expandedCardId = null;
 let nearbyQuery = "";
@@ -423,9 +578,45 @@ let qrScanState = "idle"; // idle | scanning | found
 let qrFoundUserId = null;
 let qrTimeoutRef = null;
 
+let dashBusinessId = "BIZ00001";
+let dashPeriod = "30"; // "7" | "30" | "all"
+let dashChip = "all"; // all | recurrente | racha | plumas
+let dashRankTab = "clientes"; // clientes | comercios
+
 function triggerToast(msg) {
   const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// --- MOTOR DE SONIDO (Web Audio API, sin archivos externos) ---
+let audioCtx = null;
+function getAudioCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+function playTone(freq, duration, type, delay, volume) {
+  try {
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type || 'sine';
+    osc.frequency.value = freq;
+    const t0 = ctx.currentTime + (delay || 0);
+    gain.gain.setValueAtTime(volume || 0.15, t0);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t0 + duration);
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.start(t0);
+    osc.stop(t0 + duration + 0.02);
+  } catch (e) { /* audio no disponible en este entorno */ }
+}
+// Sonido corto al agregar 1 sello
+function playStampSound() { playTone(920, 0.09, 'sine', 0, 0.16); }
+// Sonido distinto y más festivo al completar el ciclo (reward_ready)
+function playCompleteSound() {
+  playTone(660, 0.1, 'triangle', 0, 0.18);
+  playTone(880, 0.1, 'triangle', 0.1, 0.18);
+  playTone(1320, 0.22, 'triangle', 0.2, 0.2);
 }
 
 function getTier(plumas) {
@@ -440,6 +631,81 @@ function getDiscountRate(tier) {
   return 0;
 }
 
+// --- GENERADORES DE ID SEGÚN REGLA DE NEGOCIO ---
+// USR + 8 dígitos: si el documento es DNI, se usan sus 8 dígitos tal cual.
+// Si es otro tipo de documento, el ID es "000" + 5 dígitos correlativos de orden de registro.
+function generateUserId(docType, docValue, registrationOrder) {
+  if (docType === "DNI" && /^\d{8}$/.test(docValue || "")) {
+    return "USR" + docValue;
+  }
+  return "USR000" + String(registrationOrder).padStart(5, "0");
+}
+
+// BIZ + 5 dígitos correlativos según el orden de afiliación de cada comercio.
+function generateBusinessId(registrationOrder) {
+  return "BIZ" + String(registrationOrder).padStart(5, "0");
+}
+
+// --- NIVELES POR COMERCIO (cada tarjeta/comercio tiene su propio rango) ---
+// El "mejor nivel" alcanzado por el usuario en cualquiera de sus comercios
+// es el que habilita los descuentos transversales de la Gifting Economy.
+function getBestTier(userId) {
+  const tiers = getUserCards(userId).map(c => getTier(c.total_historical_plumas));
+  if (tiers.includes("Oro")) return "Oro";
+  if (tiers.includes("Plata")) return "Plata";
+  return "Bronce";
+}
+
+function getBestTierInfo(userId) {
+  const cards = getUserCards(userId);
+  let best = { tier: "Bronce", plumas: -1, bizName: null };
+  cards.forEach(c => {
+    const t = getTier(c.total_historical_plumas);
+    const rank = { Bronce: 0, Plata: 1, Oro: 2 };
+    if (rank[t] > rank[best.tier] || (rank[t] === rank[best.tier] && c.total_historical_plumas > best.plumas)) {
+      const biz = DB.businesses.find(b => b.id === c.business_id);
+      best = { tier: t, plumas: c.total_historical_plumas, bizName: biz ? biz.name : "" };
+    }
+  });
+  return best;
+}
+
+const TIER_MEDAL = { Bronce: "🥉", Plata: "🥈", Oro: "🥇" };
+
+// --- RACHA POR COMERCIO: semanas consecutivas con al menos 1 visita a esa tarjeta ---
+function getWeekBucket(isoDate) {
+  return Math.floor(new Date(isoDate + "T00:00:00").getTime() / (7 * 86400000));
+}
+
+function computeCardStreak(cardId) {
+  const weeks = [...new Set(
+    DB.transactions
+      .filter(t => t.card_id === cardId && t.type === 'stamp_add' && t.visit_date)
+      .map(t => getWeekBucket(t.visit_date))
+  )].sort((a, b) => a - b);
+
+  if (weeks.length === 0) return 0;
+  let streak = 1;
+  for (let i = weeks.length - 1; i > 0; i--) {
+    if (weeks[i] - weeks[i - 1] === 1) streak++;
+    else break;
+  }
+  return streak;
+}
+
+function getBestStreak(userId) {
+  const cards = getUserCards(userId);
+  let best = { streak: 0, bizName: null };
+  cards.forEach(c => {
+    const s = computeCardStreak(c.id);
+    if (s > best.streak) {
+      const biz = DB.businesses.find(b => b.id === c.business_id);
+      best = { streak: s, bizName: biz ? biz.name : "" };
+    }
+  });
+  return best;
+}
+
 // --- HELPERS DE ECOSISTEMA MULTI-COMERCIO ---
 function getUserCards(userId) {
   return DB.loyaltyCards.filter(c => c.user_id === userId);
@@ -449,9 +715,9 @@ function getUserTotalPlumas(userId) {
   return getUserCards(userId).reduce((sum, c) => sum + c.total_historical_plumas, 0);
 }
 
-// El panel de comercio (en caja) representa siempre a Gold Bird Café (BIZ-101)
+// El panel de comercio (en caja) representa siempre a Gold Bird Café (BIZ00001)
 function getPrimaryMerchantCard(userId) {
-  return DB.loyaltyCards.find(c => c.user_id === userId && c.business_id === "BIZ-101");
+  return DB.loyaltyCards.find(c => c.user_id === userId && c.business_id === "BIZ00001");
 }
 
 function toggleCardExpand(cardId) {
@@ -475,6 +741,228 @@ function joinBusiness(businessId) {
   triggerToast(`🎉 ¡Te uniste a ${biz.name}! Tu nueva tarjeta ya está disponible en Mis Tarjetas`);
   activeClientTab = 'cards';
   renderAll();
+}
+
+// --- DASHBOARD DEL COMERCIO: KPIs, SERIE DIARIA, RECURRENCIA Y RANKINGS ---
+function setDashBusiness(id) { dashBusinessId = id; renderDashboard(); }
+function setDashPeriod(val) { dashPeriod = val; renderDashboard(); }
+function setDashChip(val) { dashChip = val; renderDashboard(); }
+function setDashRankTab(tab) { dashRankTab = tab; renderDashboard(); }
+
+function daysSinceToday(isoDate) {
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const d = new Date(isoDate + "T00:00:00");
+  return Math.round((today - d) / 86400000);
+}
+
+function getBusinessCards(businessId) {
+  return DB.loyaltyCards.filter(c => c.business_id === businessId);
+}
+
+// Transacciones de sellado de un comercio, opcionalmente acotadas a una ventana de días
+function getBusinessStampTx(businessId, withinDays) {
+  const cardIds = getBusinessCards(businessId).map(c => c.id);
+  return DB.transactions.filter(t => {
+    if (t.type !== 'stamp_add' || !t.visit_date || !cardIds.includes(t.card_id)) return false;
+    if (withinDays === 'all' || withinDays === undefined) return true;
+    return daysSinceToday(t.visit_date) <= Number(withinDays) && daysSinceToday(t.visit_date) >= 0;
+  });
+}
+
+function getBusinessRedemptions(businessId, withinDays) {
+  const cardIds = getBusinessCards(businessId).map(c => c.id);
+  return DB.transactions.filter(t => {
+    if (t.type !== 'reward_redeem' || !cardIds.includes(t.card_id)) return false;
+    return true; // los canjes no llevan visit_date en el modelo actual
+  });
+}
+
+// % de clientes de un comercio que visitaron 2+ veces en los últimos 30 días
+function getMonthlyRecurrence(businessId) {
+  const tx = getBusinessStampTx(businessId, 30);
+  const byCard = {};
+  tx.forEach(t => { byCard[t.card_id] = (byCard[t.card_id] || new Set()); byCard[t.card_id].add(t.visit_date); });
+  const cardIdsWithVisits = Object.keys(byCard);
+  const total = cardIdsWithVisits.length;
+  const recurrentes = cardIdsWithVisits.filter(id => byCard[id].size >= 2).length;
+  const pct = total > 0 ? Math.round((recurrentes / total) * 100) : 0;
+  return { pct, recurrentes, total, nuevos: total - recurrentes };
+}
+
+// Serie de plumas otorgadas por día para el gráfico
+function getDailySeries(businessId, period) {
+  const days = period === 'all' ? 60 : Number(period);
+  const tx = getBusinessStampTx(businessId, period === 'all' ? 'all' : days);
+  const byDate = {};
+  tx.forEach(t => { byDate[t.visit_date] = (byDate[t.visit_date] || 0) + t.amount_plumas; });
+
+  if (period === 'all') {
+    return Object.keys(byDate).sort().map(d => ({ date: d, value: byDate[d] }));
+  }
+  const series = [];
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  for (let i = days - 1; i >= 0; i--) {
+    const d = new Date(today); d.setDate(d.getDate() - i);
+    const iso = d.toISOString().slice(0, 10);
+    series.push({ date: iso, value: byDate[iso] || 0 });
+  }
+  return series;
+}
+
+function renderDailyChart(series) {
+  const w = 560, h = 150, padL = 6, padR = 6, padB = 18, padT = 10;
+  const innerW = w - padL - padR;
+  const innerH = h - padT - padB;
+  const max = Math.max(1, ...series.map(p => p.value));
+  const barW = Math.max(2, innerW / series.length - 3);
+  const step = innerW / series.length;
+
+  const showEvery = series.length > 20 ? Math.ceil(series.length / 10) : 1;
+
+  const bars = series.map((p, i) => {
+    const barH = (p.value / max) * innerH;
+    const x = padL + i * step + (step - barW) / 2;
+    const y = padT + (innerH - barH);
+    const label = new Date(p.date + "T00:00:00").toLocaleDateString('es-PE', { day: '2-digit', month: 'short' });
+    const showLabel = (i % showEvery === 0) || i === series.length - 1;
+    return `
+      <rect class="daily-bar" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${Math.max(1, barH).toFixed(1)}" rx="2">
+        <title>${label}: ${p.value} 🪶</title>
+      </rect>
+      ${p.value > 0 ? `<text class="daily-val-label" x="${(x + barW / 2).toFixed(1)}" y="${(y - 3).toFixed(1)}" text-anchor="middle">${p.value}</text>` : ''}
+      ${showLabel ? `<text class="daily-axis-label" x="${(x + barW / 2).toFixed(1)}" y="${h - 4}" text-anchor="middle">${label}</text>` : ''}
+    `;
+  }).join('');
+
+  return `<svg class="daily-chart-svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet">${bars}</svg>`;
+}
+
+function renderRecurrenceGauge(pct) {
+  const r = 46, c = 2 * Math.PI * r;
+  const filled = (pct / 100) * c;
+  return `
+    <svg width="140" height="140" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="${r}" fill="none" stroke="var(--surface-2)" stroke-width="12"/>
+      <circle cx="60" cy="60" r="${r}" fill="none" stroke="url(#gaugeGrad)" stroke-width="12"
+        stroke-dasharray="${filled.toFixed(1)} ${c.toFixed(1)}" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+      <defs>
+        <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#B08D57"/>
+          <stop offset="100%" stop-color="#E8C874"/>
+        </linearGradient>
+      </defs>
+      <text x="60" y="66" text-anchor="middle" class="recurrence-pct">${pct}%</text>
+    </svg>
+  `;
+}
+
+function getDashRankingData() {
+  if (dashRankTab === 'comercios') {
+    return DB.businesses.map(b => {
+      const cards = getBusinessCards(b.id);
+      const plumas = cards.reduce((s, c) => s + c.total_historical_plumas, 0);
+      const rec = getMonthlyRecurrence(b.id).pct;
+      const bestStreakInBiz = Math.max(0, ...cards.map(c => computeCardStreak(c.id)));
+      return { label: `${b.icon} ${b.name}`, plumas, rec, streak: bestStreakInBiz };
+    });
+  }
+  // clientes del comercio actualmente filtrado
+  return getBusinessCards(dashBusinessId).map(c => {
+    const user = DB.users.find(u => u.id === c.user_id);
+    const rec = getBusinessStampTx(dashBusinessId, 30).filter(t => t.card_id === c.id).length;
+    return { label: user ? user.name : c.user_id, plumas: c.total_historical_plumas, rec, streak: computeCardStreak(c.id) };
+  });
+}
+
+function renderDashRankList() {
+  let data = getDashRankingData();
+  if (dashChip === 'recurrente') data = [...data].sort((a, b) => b.rec - a.rec);
+  else if (dashChip === 'racha') data = [...data].sort((a, b) => b.streak - a.streak);
+  else data = [...data].sort((a, b) => b.plumas - a.plumas);
+
+  if (!data.length) return `<div class="empty-state">Sin datos para este comercio todavía.</div>`;
+  const metricLabel = dashChip === 'recurrente' ? 'visitas (30d)' : (dashChip === 'racha' ? 'sem. racha' : '🪶');
+  const metricVal = d => dashChip === 'recurrente' ? d.rec : (dashChip === 'racha' ? d.streak : d.plumas);
+  const top6 = data.slice(0, 6);
+  const maxMetric = Math.max(1, ...top6.map(metricVal));
+
+  return top6.map((d, i) => `
+    <div class="rank-row">
+      <div class="rank-row-top">
+        <span class="rk-name"><span class="rk-idx">${String(i + 1).padStart(2, '0')}</span>${d.label}</span>
+        <span class="rk-val">${metricVal(d)} ${metricLabel}</span>
+      </div>
+      <div class="rank-bar-track"><div class="rank-bar-fill" style="width:${Math.min(100, (metricVal(d) / maxMetric) * 100)}%"></div></div>
+    </div>
+  `).join('');
+}
+
+function renderDashboard() {
+  const selectBiz = document.getElementById('dash-business-filter');
+  if (!selectBiz) return;
+  if (!selectBiz.dataset.filled) {
+    selectBiz.innerHTML = DB.businesses.map(b => `<option value="${b.id}">${b.icon} ${b.name}</option>`).join('');
+    selectBiz.dataset.filled = "1";
+  }
+  selectBiz.value = dashBusinessId;
+  document.getElementById('dash-period-filter').value = dashPeriod;
+
+  ['all', 'recurrente', 'racha', 'plumas'].forEach(k => {
+    document.getElementById('dash-chip-' + k).classList.toggle('active', dashChip === k);
+  });
+  document.getElementById('dash-rank-tab-clientes').classList.toggle('active', dashRankTab === 'clientes');
+  document.getElementById('dash-rank-tab-comercios').classList.toggle('active', dashRankTab === 'comercios');
+
+  const biz = DB.businesses.find(b => b.id === dashBusinessId);
+  const periodDays = dashPeriod === 'all' ? 'all' : Number(dashPeriod);
+  const currentTx = getBusinessStampTx(dashBusinessId, periodDays);
+  const totalPlumas = currentTx.reduce((s, t) => s + t.amount_plumas, 0);
+
+  // Comparación vs período anterior equivalente
+  let trendHtml = '';
+  if (periodDays !== 'all') {
+    const prevTx = DB.transactions.filter(t => {
+      if (t.type !== 'stamp_add' || !t.visit_date) return false;
+      const cardIds = getBusinessCards(dashBusinessId).map(c => c.id);
+      if (!cardIds.includes(t.card_id)) return false;
+      const d = daysSinceToday(t.visit_date);
+      return d > periodDays && d <= periodDays * 2;
+    });
+    const prevTotal = prevTx.reduce((s, t) => s + t.amount_plumas, 0);
+    if (prevTotal === 0 && totalPlumas === 0) {
+      trendHtml = `<span class="kpi-trend flat">Sin datos en el período anterior</span>`;
+    } else if (prevTotal === 0) {
+      trendHtml = `<span class="kpi-trend up">▲ Nuevo crecimiento</span>`;
+    } else {
+      const change = Math.round(((totalPlumas - prevTotal) / prevTotal) * 100);
+      trendHtml = `<span class="kpi-trend ${change >= 0 ? 'up' : 'down'}">${change >= 0 ? '▲' : '▼'} ${Math.abs(change)}% vs. período anterior</span>`;
+    }
+  }
+
+  const activeClients = new Set(currentTx.map(t => t.card_id)).size;
+  const redemptions = getBusinessRedemptions(dashBusinessId).length;
+  const readyNow = getBusinessCards(dashBusinessId).filter(c => c.reward_ready).length;
+  const redemptionRate = (redemptions + readyNow) > 0 ? Math.round((redemptions / (redemptions + readyNow)) * 100) : null;
+
+  document.getElementById('dash-kpi-plumas').textContent = totalPlumas + ' 🪶';
+  document.getElementById('dash-kpi-trend').innerHTML = trendHtml;
+  document.getElementById('dash-kpi-redemption').textContent = redemptionRate !== null ? redemptionRate + '%' : '—';
+  document.getElementById('dash-kpi-visits').textContent = currentTx.length;
+  document.getElementById('dash-kpi-active').textContent = activeClients;
+  document.getElementById('dash-kpi-redeemed').textContent = redemptions;
+
+  document.getElementById('dash-daily-chart').innerHTML = renderDailyChart(getDailySeries(dashBusinessId, dashPeriod));
+
+  const recurrence = getMonthlyRecurrence(dashBusinessId);
+  document.getElementById('dash-recurrence-donut').innerHTML = `<div class="recurrence-gauge-wrap">${renderRecurrenceGauge(recurrence.pct)}</div>`;
+  document.getElementById('dash-recurrence-legend').innerHTML = `
+    <div class="recurrence-legend">
+      <span><span class="dot" style="background:var(--gold-light);"></span>Recurrentes (2+ visitas): ${recurrence.recurrentes}</span>
+      <span><span class="dot" style="background:var(--text-faint);"></span>Visita única: ${recurrence.nuevos}</span>
+    </div>
+  `;
+
+  document.getElementById('dash-rank-list').innerHTML = renderDashRankList();
 }
 
 // --- CÁLCULO DE RECURRENCIA E INDICADOR DE FIDELIDAD (ANALÍTICA DE VISITAS) ---
@@ -536,16 +1024,15 @@ function executeAddStamp(cardId) {
     return;
   }
 
-  const prevTotal = getUserTotalPlumas(card.user_id);
+  const prevPlumas = card.total_historical_plumas;
 
   // Regla de Negocio: 1 Sello = 1 Pluma
   card.current_stamps += 1;
   card.total_historical_plumas += 1;
 
-  // Sincroniza experience_points (agregado multi-comercio) en la dimensión Users
+  // Sincroniza experience_points (suma total de plumas en TODOS los comercios)
   const user = DB.users.find(u => u.id === card.user_id);
-  const newTotal = getUserTotalPlumas(card.user_id);
-  if (user) user.experience_points = newTotal;
+  if (user) user.experience_points = getUserTotalPlumas(card.user_id);
 
   // Registro del evento transaccional puro
   const now = new Date();
@@ -559,20 +1046,23 @@ function executeAddStamp(cardId) {
     visit_date: now.toISOString().slice(0, 10)
   });
 
-  const crossedGold = prevTotal < 30 && newTotal >= 30;
-  const crossedSilver = !crossedGold && prevTotal < 10 && newTotal >= 10;
+  // El nivel es POR COMERCIO: el cruce se evalúa sobre el historial de ESTA tarjeta
+  const crossedGold = prevPlumas < 30 && card.total_historical_plumas >= 30;
+  const crossedSilver = !crossedGold && prevPlumas < 10 && card.total_historical_plumas >= 10;
 
   if (card.current_stamps >= biz.max_sellos_recompensa) {
     card.reward_ready = true;
-    triggerToast(`🎁 ¡Ciclo completado! Premio habilitado para ${user.name}`);
+    playCompleteSound();
+    triggerToast(`🎁 ¡Ciclo completado en ${biz.name}! Premio habilitado para ${user.name}`);
   } else {
+    playStampSound();
     triggerToast("+1 Pluma / Sello otorgado correctamente");
   }
 
   renderAll();
 
-  if (crossedGold) showLevelUpModal("Oro", user);
-  else if (crossedSilver) showLevelUpModal("Plata", user);
+  if (crossedGold) showLevelUpModal("Oro", user, biz);
+  else if (crossedSilver) showLevelUpModal("Plata", user, biz);
 }
 
 function executeRedeemReward(cardId) {
@@ -596,19 +1086,19 @@ function executeRedeemReward(cardId) {
 }
 
 // --- CELEBRACIÓN DE CAMBIO DE NIVEL ---
-function showLevelUpModal(tier, user) {
+function showLevelUpModal(tier, user, biz) {
   const box = document.getElementById('levelup-box');
   box.className = "modal-box levelup-box lv-" + tier;
-  const medal = tier === "Oro" ? "🥇" : "🥈";
+  const medal = TIER_MEDAL[tier];
   const perks = tier === "Oro"
-    ? ["20% OFF en toda la Gifting Economy", "Acceso prioritario a experiencias premium", "Cupones exclusivos de socios Gold Bird"]
-    : ["10% OFF en toda la Gifting Economy", "Insignia Plata visible en tu pase digital", "A un paso del nivel Oro"];
+    ? ["20% OFF en toda la Gifting Economy (mejor nivel alcanzado)", "Acceso prioritario a experiencias premium", `Medalla 🥇 Oro visible en tu tarjeta de ${biz.name}`]
+    : ["10% OFF en toda la Gifting Economy (mejor nivel alcanzado)", `Medalla 🥈 Plata visible en tu tarjeta de ${biz.name}`, "A un paso del nivel Oro en este comercio"];
 
   box.innerHTML = `
     <button class="modal-close" onclick="closeLevelUp()">✕</button>
     <div style="text-align:center;">
       <div class="levelup-medal">${medal}</div>
-      <div class="modal-title">¡${user.name} subió a Nivel ${tier}!</div>
+      <div class="modal-title">¡${user.name} subió a Nivel ${tier} en ${biz.name}!</div>
       <div class="modal-sub">Correo simulado enviado a ${user.email}</div>
     </div>
     <ul class="levelup-perks">
@@ -698,7 +1188,7 @@ function renderMerchantSearch() {
   if (merchantMode === 'search') {
     bodyHtml = `
       <label style="margin-top:0;">Buscar por ID o nombre del cliente</label>
-      <input type="text" id="merchant-search-input" placeholder="Ej: USR-001 o user1" oninput="filterMerchantSearch(this.value)">
+      <input type="text" id="merchant-search-input" placeholder="Ej: USR72841096 o user1" oninput="filterMerchantSearch(this.value)">
       <label>Cliente seleccionado</label>
       <select id="merchant-select-client" onchange="selectClient(this.value)"></select>
     `;
@@ -750,7 +1240,7 @@ function renderMerchantSearch() {
 // --- FLUJO DE REGALO (3 CLICKS) ---
 // Click 1: seleccionar producto del feed
 function openGiftForm(catalogId) {
-  const tier = getTier(getUserTotalPlumas(activeClientId));
+  const tier = getBestTier(activeClientId);
   const item = GIFT_CATALOG.find(i => i.id === catalogId);
   const rate = getDiscountRate(tier);
   const discounted = Math.round(item.price * (1 - rate));
@@ -901,6 +1391,8 @@ function renderLevelBlock(plumas) {
 function renderBizCard(card) {
   const biz = DB.businesses.find(b => b.id === card.business_id);
   const isExpanded = expandedCardId === card.id;
+  const cardTier = getTier(card.total_historical_plumas);
+  const streak = computeCardStreak(card.id);
   let stampsHtml = '';
   for (let i = 1; i <= biz.max_sellos_recompensa; i++) {
     const isFilled = i <= card.current_stamps;
@@ -910,11 +1402,14 @@ function renderBizCard(card) {
     <div class="biz-card" style="--c1:${biz.color1}; --c2:${biz.color2};" onclick="toggleCardExpand('${card.id}')">
       <div class="biz-card-top">
         <div class="biz-card-id"><span class="biz-emoji">${biz.icon}</span><div><div class="biz-name">${biz.name}</div><div class="biz-cat">${biz.category}</div></div></div>
-        <span class="biz-chevron">${isExpanded ? '⌃' : '⌄'}</span>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <span class="tier-medal" title="Nivel ${cardTier} en ${biz.name}">${TIER_MEDAL[cardTier]} ${cardTier}</span>
+          <span class="biz-chevron">${isExpanded ? '⌃' : '⌄'}</span>
+        </div>
       </div>
       <div class="biz-stamp-row">${stampsHtml}</div>
       <div class="biz-card-foot">
-        <span>${card.current_stamps}/${biz.max_sellos_recompensa}</span>
+        <span>${card.current_stamps}/${biz.max_sellos_recompensa} · ${streak > 0 ? '🔥 Racha ' + streak + (streak === 1 ? ' semana' : ' semanas') : 'Sin racha activa'}</span>
         <span>${card.reward_ready ? '🎉 ¡Casi listo! Reclama tu premio' : 'Toca para ver detalle'}</span>
       </div>
       ${isExpanded ? `
@@ -922,7 +1417,8 @@ function renderBizCard(card) {
           ${card.reward_ready
             ? `<div class="reward-banner" style="background:rgba(255,255,255,0.14); border-color:rgba(255,255,255,0.4); color:#fff;">🎁 ¡Recompensa lista! Muestra esta tarjeta en ${biz.name} para reclamarla.</div>`
             : `<p style="font-size:11.5px; color:rgba(255,255,255,0.85);">Te faltan <b>${biz.max_sellos_recompensa - card.current_stamps}</b> sellos para tu próximo premio en ${biz.name}.</p>`}
-          <p style="font-size:11px; color:rgba(255,255,255,0.6); margin-top:4px;">Histórico: ${card.total_historical_plumas} 🪶 · Tarjeta ${card.id}</p>
+          <p style="font-size:11px; color:rgba(255,255,255,0.6); margin-top:4px 0 8px;">Histórico en este comercio: ${card.total_historical_plumas} 🪶 · Tarjeta ${card.id}</p>
+          <div style="background:rgba(0,0,0,0.2); border-radius:8px; padding:8px 10px; margin-top:8px;">${renderLevelBlock(card.total_historical_plumas)}</div>
         </div>
       ` : ''}
     </div>
@@ -930,15 +1426,15 @@ function renderBizCard(card) {
 }
 
 function renderTabCards(user, totalPlumas) {
-  const tier = getTier(totalPlumas);
   const myCards = getUserCards(user.id);
+  const best = getBestTierInfo(user.id);
   return `
-    <div class="pass tier-pass-${tier}">
+    <div class="pass tier-pass-${best.tier}">
       <div class="pass-main">
         <span class="eyebrow" style="font-size:10px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.5px;">Programa general Gold Bird</span>
         <div class="client-name">${user.name}</div>
-        <span class="tier-badge tier-${tier}">Rango: ${tier}</span>
-        ${renderLevelBlock(totalPlumas)}
+        <p style="font-size:12px; color:var(--text-dim); margin-top:4px;">🪶 <b style="color:var(--gold-light)">${totalPlumas} plumas</b> acumuladas en total, en ${myCards.length} comercio${myCards.length === 1 ? '' : 's'} afiliado${myCards.length === 1 ? '' : 's'}.</p>
+        ${best.bizName ? `<span class="tier-badge tier-${best.tier}">Mejor nivel: ${TIER_MEDAL[best.tier]} ${best.tier} en ${best.bizName}</span>` : ''}
       </div>
       <div class="pass-stub">
         <div class="qr-mock"><div></div></div>
@@ -946,6 +1442,7 @@ function renderTabCards(user, totalPlumas) {
       </div>
     </div>
     <div class="section-label">Mis comercios afiliados (${myCards.length})</div>
+    <p style="font-size:11.5px; color:var(--text-faint); margin:-4px 0 10px;">El nivel y la racha se calculan de forma independiente en cada comercio.</p>
     ${myCards.map(renderBizCard).join('')}
     <button class="btn btn-outline" onclick="switchClientTab('nearby')">📍 Descubrir más comercios cerca</button>
   `;
@@ -953,12 +1450,13 @@ function renderTabCards(user, totalPlumas) {
 
 // --- TAB 2: PREMIOS (rachas, recompensas listas, regalar experiencias y mis cupones) ---
 function renderTabRewards(user, totalPlumas) {
-  const tier = getTier(totalPlumas);
+  const tier = getBestTier(user.id);
   const rate = getDiscountRate(tier);
   const myCards = getUserCards(user.id);
   const readyCards = myCards.filter(c => c.reward_ready);
   const myCoupons = DB.giftedCoupons.filter(c => c.sender_id === user.id);
   const vigentes = myCoupons.filter(c => c.status === 'purchased').length;
+  const bestStreak = getBestStreak(user.id);
 
   const readyHtml = readyCards.length ? readyCards.map(c => {
     const biz = DB.businesses.find(b => b.id === c.business_id);
@@ -997,13 +1495,13 @@ function renderTabRewards(user, totalPlumas) {
 
   return `
     <div class="stats-row">
-      <div class="stat-pill"><div class="stat-icon">🔥</div><div class="stat-num">${user.racha_dias || 0}</div><div class="stat-label">Racha (días)</div></div>
+      <div class="stat-pill"><div class="stat-icon">🔥</div><div class="stat-num">${bestStreak.streak}</div><div class="stat-label">${bestStreak.bizName ? 'Racha en ' + bestStreak.bizName : 'Racha (semanas)'}</div></div>
       <div class="stat-pill"><div class="stat-icon">🪶</div><div class="stat-num">${totalPlumas}</div><div class="stat-label">Plumas totales</div></div>
       <div class="stat-pill"><div class="stat-icon">🎁</div><div class="stat-num">${vigentes}</div><div class="stat-label">Cupones vigentes</div></div>
     </div>
     ${readyHtml}
     <div class="section-label">Regala una experiencia</div>
-    <p style="font-size:12px; color:var(--text-dim); margin-bottom:6px;">Tu nivel <b style="color:var(--gold-light)">${tier}</b> aplica ${Math.round(rate*100)}% OFF automático.</p>
+    <p style="font-size:12px; color:var(--text-dim); margin-bottom:6px;">Tu mejor nivel <b style="color:var(--gold-light)">${TIER_MEDAL[tier]} ${tier}</b> aplica ${Math.round(rate*100)}% OFF automático en toda la Gifting Economy.</p>
     ${giftItems}
     <div class="section-label" style="margin-top:14px;">Mis cupones</div>
     ${couponsHtml}
@@ -1052,22 +1550,45 @@ function renderTabNearby(user) {
 
 // --- TAB 4: PERFIL ---
 function renderTabProfile(user, totalPlumas) {
-  const tier = getTier(totalPlumas);
   const myCards = getUserCards(user.id);
+  const best = getBestTierInfo(user.id);
+  const bestStreak = getBestStreak(user.id);
   const initials = user.name.slice(0, 2).toUpperCase();
+  const docLine = user.doc_type === 'DNI'
+    ? `DNI ${user.doc_value}`
+    : `Documento alterno · registro N° ${user.registration_order}`;
+
+  const breakdownHtml = myCards.map(c => {
+    const biz = DB.businesses.find(b => b.id === c.business_id);
+    const t = getTier(c.total_historical_plumas);
+    const s = computeCardStreak(c.id);
+    return `
+      <div style="display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--border-soft);">
+        <span style="font-size:18px;">${biz.icon}</span>
+        <div style="flex:1;">
+          <div style="font-size:12.5px; color:var(--text);">${biz.name}</div>
+          <div style="font-size:10.5px; color:var(--text-faint);">${c.total_historical_plumas} 🪶 · ${s > 0 ? '🔥 racha ' + s + 'sem.' : 'sin racha'}</div>
+        </div>
+        <span class="tier-badge tier-${t}">${TIER_MEDAL[t]} ${t}</span>
+      </div>
+    `;
+  }).join('');
+
   return `
     <div style="text-align:center; padding:10px 0 4px;">
       <div class="app-avatar" style="width:64px; height:64px; font-size:22px; margin:0 auto 10px;">${initials}</div>
       <div class="client-name">${user.name}</div>
-      <p style="font-size:12px; color:var(--text-dim); margin:2px 0 8px;">${user.email}</p>
-      <span class="tier-badge tier-${tier}">Rango: ${tier}</span>
+      <p style="font-size:12px; color:var(--text-dim); margin:2px 0 2px;">${user.email}</p>
+      <p style="font-size:10.5px; color:var(--text-faint); margin-bottom:8px;">${docLine} · ${user.id}</p>
+      ${best.bizName ? `<span class="tier-badge tier-${best.tier}">Mejor nivel: ${TIER_MEDAL[best.tier]} ${best.tier} en ${best.bizName}</span>` : ''}
     </div>
-    ${renderLevelBlock(totalPlumas)}
     <div class="stats-row">
       <div class="stat-pill"><div class="stat-icon">🏪</div><div class="stat-num">${myCards.length}</div><div class="stat-label">Comercios afiliados</div></div>
       <div class="stat-pill"><div class="stat-icon">🪶</div><div class="stat-num">${totalPlumas}</div><div class="stat-label">Plumas totales</div></div>
-      <div class="stat-pill"><div class="stat-icon">🔥</div><div class="stat-num">${user.racha_dias || 0}</div><div class="stat-label">Racha (días)</div></div>
+      <div class="stat-pill"><div class="stat-icon">🔥</div><div class="stat-num">${bestStreak.streak}</div><div class="stat-label">Mejor racha (sem.)</div></div>
     </div>
+    <div class="section-label">Nivel por comercio</div>
+    ${breakdownHtml}
     <div class="section-label">ID de miembro</div>
     <div style="display:flex; align-items:center; gap:12px; background:var(--surface-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:12px;">
       <div class="qr-mock" style="width:52px; height:52px;"><div></div></div>
@@ -1086,7 +1607,7 @@ function renderClientComponent() {
   }
 
   const totalPlumas = getUserTotalPlumas(user.id);
-  const tier = getTier(totalPlumas);
+  const bestTier = getBestTier(user.id);
   const initials = user.name.slice(0, 2).toUpperCase();
 
   let tabContent = '';
@@ -1105,7 +1626,7 @@ function renderClientComponent() {
         <div class="app-greeting">${greeting}</div>
         <div class="app-user-name">${user.name}</div>
       </div>
-      <span class="tier-badge tier-${tier}">${tier}</span>
+      <span class="tier-badge tier-${bestTier}">${TIER_MEDAL[bestTier]} ${bestTier}</span>
       <button class="icon-btn" title="Notificaciones">🔔</button>
     </div>
 
@@ -1132,11 +1653,12 @@ function renderMerchantComponent() {
 
   const biz = DB.businesses.find(b => b.id === card.business_id);
   const activity = computeClientActivity(user.id);
-  const aggregateTier = getTier(getUserTotalPlumas(user.id));
+  const cardTier = getTier(card.total_historical_plumas);
+  const cardStreak = computeCardStreak(card.id);
   target.innerHTML = `
     <div style="background:var(--surface-2); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-soft);">
       <h4 style="font-size:14px; font-weight:600; margin-bottom:4px;">Cliente detectado: ${user.name}</h4>
-      <p style="font-size:12px; color:var(--text-dim);">Tarjeta ${biz.name}: <b>${card.current_stamps}/${biz.max_sellos_recompensa} Sellos</b> | Rango Gold Bird: <b>${aggregateTier}</b></p>
+      <p style="font-size:12px; color:var(--text-dim);">Tarjeta ${biz.name}: <b>${card.current_stamps}/${biz.max_sellos_recompensa} Sellos</b> | Nivel en este comercio: <b>${TIER_MEDAL[cardTier]} ${cardTier}</b> | Racha: <b>${cardStreak > 0 ? cardStreak + ' sem.' : '—'}</b></p>
       <p style="font-size:12px; color:var(--text-dim); margin-top:4px;">Última visita: <b style="color:var(--gold-light)">${activity.lastVisit ? formatVisitDate(activity.lastVisit) + ' · ' + activity.lastVisitTime : 'Sin registro'}</b> · Recurrencia: <b>${activity.avgIntervalDays !== null ? 'cada ~' + activity.avgIntervalDays + ' días' : '—'}</b> · Fidelidad: <b>${activity.fidelity}</b></p>
 
       <button class="btn" onclick="executeAddStamp('${card.id}')" ${card.reward_ready ? 'disabled' : ''}>
@@ -1152,21 +1674,23 @@ function renderMerchantComponent() {
 
 function renderInspectorTables() {
   document.getElementById('db-users-body').innerHTML = DB.users.map(u =>
-    `<tr><td class="highlight">${u.id}</td><td>${u.name}</td><td>${u.email}</td><td>${u.role}</td><td>${u.experience_points !== undefined ? u.experience_points + ' 🪶' : '—'}</td></tr>`
+    `<tr><td class="highlight">${u.id}</td><td>${u.name}</td><td>${u.email}</td><td>${u.role}</td><td>${u.doc_type === 'DNI' ? 'DNI ' + u.doc_value : 'Otro (reg. #' + u.registration_order + ')'}</td><td>${u.experience_points !== undefined ? u.experience_points + ' 🪶' : '—'}</td></tr>`
   ).join('');
 
   document.getElementById('db-businesses-body').innerHTML = DB.businesses.map(b =>
-    `<tr><td class="highlight">${b.id}</td><td>${b.icon} ${b.name}</td><td>${b.category}</td><td>${b.puntos_por_sello} pluma</td><td>${b.max_sellos_recompensa}</td><td>⭐ ${b.rating}</td></tr>`
+    `<tr><td class="highlight">${b.id}</td><td>${b.icon} ${b.name}</td><td>${b.category}</td><td>${b.puntos_por_sello} pluma</td><td>${b.max_sellos_recompensa}</td><td>⭐ ${b.rating}</td><td>#${b.registration_order}</td></tr>`
   ).join('');
 
   document.getElementById('db-cards-body').innerHTML = DB.loyaltyCards.map(c => {
     const biz = DB.businesses.find(b => b.id === c.business_id);
+    const t = getTier(c.total_historical_plumas);
     return `<tr>
       <td class="highlight">${c.id}</td>
       <td>${c.user_id}</td>
       <td>${c.business_id} (${biz ? biz.name : '—'})</td>
       <td style="color:var(--gold-light); font-weight:600;">${c.current_stamps}/${biz ? biz.max_sellos_recompensa : '?'}</td>
       <td style="color:#5FA8D3; font-weight:600;">${c.total_historical_plumas} 🪶</td>
+      <td>${TIER_MEDAL[t]} ${t}</td>
       <td style="color:${c.reward_ready ? 'var(--gold)' : 'var(--text-faint)'}">${c.reward_ready ? 'TRUE (Listo)' : 'FALSE'}</td>
      </tr>`;
   }).join('');
@@ -1228,6 +1752,7 @@ function renderAll() {
   renderClientComponent();
   renderMerchantSearch();
   renderMerchantComponent();
+  renderDashboard();
   renderInspectorTables();
 }
 
